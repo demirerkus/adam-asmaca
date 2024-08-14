@@ -17,7 +17,7 @@ filmler = [
         "Taxi Driver", 
         "Casablanca", 
         "Blade Runner", 
-        "The Third Man", 
+        "The Third Man",   
         "Back to the Future", 
         "The Good, the Bad and the Ugly", 
         "Some Like It Hot", 
@@ -153,5 +153,142 @@ filmler = [
         "Ocean's Eleven"
     ]
 ```
+In evert Adam Asmaca game there must be something that you are trying to guess what it is to win the game. You can choose any topic that you want. We choose movies and that is our movie list.
 *filmler* is the name of the list. All movies referance from **[cinemarealm](https://www.cinemarealm.com/best-of-cinema/empires-500-greatest-movies-of-all-time/)** website.
+Python script randomly chooses the movie from the list that you created. Here is how it can do that:
+`random.choice(filmler)`
+After you the python chooses a random movie it changes every letter and number of that movie to "_". So you when you are guessing you can understand how long is that movie's name.
+Here is how python does that:
+```
+def draw_question(q: str, true_list):
+    ban_list = ["'",'"',",",":",".","-", " "]
+    output = ""
+    for i in q:
+        if i not in ban_list and i.lower() not in true_list:
+            output += "_"
+        else:
+            output += i
+    return output
+
+```
+Next step to play game with python is to draw a hangman.
+
+
+
+
 ## draw_hangman
+Hangman has a very important role in Adam Asmaca. When the game begins there isn't a hangman. You must just draw the place that hangman will be hanged. While the game goes on, at every mistake that you did; you should draw one part of the hangman. Starting from head and goes on like: body,arms and at the end legs. When the hangman is completely finished the game is over and you lose. Your aim is to guess the movie before the hangman is finsihed.
+
+
+```
+output = [
+            "  ┏━━━━━━━┓ ",
+            "  ┃       ┃ ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "━━┻━━       " 
+            ]    
+```
+As I said this is how the beginning looks like. 
+
+Then at every mistake, you start to draw the other parts.
+If you want your hangman to look different, here is the website that we used to draw it: **[Hangman](https://www.w3schools.com/charsets/ref_utf_box.asp)**
+```
+def draw_hangman(num_wrong: int):
+    if num_wrong == 0:
+        output = [
+            "  ┏━━━━━━━┓ ",
+            "  ┃       ┃ ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "━━┻━━       " 
+            ]    
+    elif num_wrong == 1:
+        output = [
+            "  ┏━━━━━━━┓ ",
+            "  ┃       ┃ ",
+            "  ┃       ● ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "━━┻━━       " 
+     ]    
+    elif num_wrong == 2:
+        output = [
+            "  ┏━━━━━━━┓ ",
+            "  ┃       ┃ ",
+            "  ┃       ● ",
+            "  ┃       ┃ ",
+            "  ┃       ┃ ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "━━┻━━       " 
+            ]    
+    elif num_wrong == 3:
+        output = [
+            "  ┏━━━━━━━┓ ",
+            "  ┃       ┃ ",
+            "  ┃       ● ",
+            "  ┃      ╱┃╲",
+            "  ┃       ┃ ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "━━┻━━       " 
+     ]    
+    else:
+        output = [
+            "  ┏━━━━━━━┓ ",
+            "  ┃       ┃ ",
+            "  ┃       ● ",
+            "  ┃      ╱┃╲",
+            "  ┃       ┃ ",
+            "  ┃      ╱ ╲",
+            "  ┃         ",
+            "  ┃         ",
+            "  ┃         ",
+            "━━┻━━       " 
+         ]    
+    return output
+
+def draw_question(q: str, true_list):
+    ban_list = ["'",'"',",",":",".","-", " "]
+    output = ""
+    for i in q:
+        if i not in ban_list and i.lower() not in true_list:
+            output += "_"
+        else:
+            output += i
+    return output
+
+def draw_false_list(false_list):
+    output = ""
+    for i in false_list:
+        output += i + " "
+    output = output[:-1]
+    return output
+if __name__ == "__main__":
+    num_wrong = 0
+```
+This is our complete code for drawing the hangman.
+
+## guessing
+
+
+
