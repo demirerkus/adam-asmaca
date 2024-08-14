@@ -8,8 +8,8 @@
 #  ┃
 #  ┃
 #━━┻━━            ______
+## Author Kadir Demir Erkuş
 import random
-
 def draw_hangman(num_wrong: int):
     if num_wrong == 0:
         output = [
