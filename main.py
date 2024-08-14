@@ -194,7 +194,6 @@ if __name__ == "__main__":
         "The Misfits", 
         "The Departed", 
         "The Magnificent Seven", 
-        "Léon", 
         "No Country for Old Men", 
         "Shaun of the Dead", 
         "Jurassic Park", 
